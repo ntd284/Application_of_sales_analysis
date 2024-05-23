@@ -1,0 +1,124 @@
+version: '3.3'
+services:
+  postgres:
+    image: debezium/example-postgres:1.9
+    platform: linux/amd64
+    container_name: postgres
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  superset:
+      build:
+        context: ./superset
+        dockerfile: dockerfile
+      container_name: superset
+      environment:
+        - ADMIN_USERNAME=admin
+        - ADMIN_EMAIL=admin@superset.com
+        - ADMIN_PASSWORD=admin
+      ports:
+        - '8088:8088'
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+
+  kafka1:
+    image: confluentinc/cp-kafka
+    restart: "no"
+    links:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      KAFKA_LISTENERS: INTERNAL://:29092,EXTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:29092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+  kafka2:
+    image: confluentinc/cp-kafka
+    restart: "no"
+    links:
+      - zookeeper
+    ports:
+      - 9093:9093
+    environment:
+      KAFKA_BROKER_ID: 2 #id duy nhất
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      KAFKA_LISTENERS: INTERNAL://:29093,EXTERNAL://:9093 #lister_kafka: 9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:29093,EXTERNAL://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+
+  kafka3:
+    image: confluentinc/cp-kafka
+    restart: "no"
+    links:
+      - zookeeper
+    ports:
+      - 9094:9094
+    environment:
+      KAFKA_BROKER_ID: 3 #id duy nhất
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LISTENERS: INTERNAL://:29094,EXTERNAL://:9094 #lister_kafka: 9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka3:29094,EXTERNAL://localhost:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+#kafdrop for topic/msg visualization
+  kafdrop:
+    image: obsidiandynamics/kafdrop:3.28.0
+    platform: linux/amd64
+    restart: "no"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka1:29092,kafka2:29093,kafka3:29094"
+      JVM_OPTS: "-Xms16M -Xmx512M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    ports:
+      - 9000:9000
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+#debezium connector
+  kconnect:
+    image: debezium/connect:1.9
+    platform: linux/amd64
+    ports:
+      - 8083:8083
+    environment:
+      CONFIG_STORAGE_TOPIC:   my_connect_configs
+      OFFSET_STORAGE_TOPIC:   my_connect_offsets
+      STATUS_STORAGE_TOPIC:   my_connect_statuses
+      BOOTSTRAP_SERVERS:   kafka1:29092,kafka2:29093,kafka3:29094 #kafka note
+    links:
+      - zookeeper
+      - postgres
+    depends_on: #kafka connect
+      - kafka1
+      - kafka2
+      - kafka3
+      - zookeeper
+      - postgres
+
