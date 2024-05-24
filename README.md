@@ -23,7 +23,17 @@ The project aims to answer key questions through real-time data analysis:
 
 ## Getting Started
 
-### Setup:
+### Project file:
+
+- `prepare_data.py`: ['prepare_data.py'](prepare_data.py) is created to clean the raw sales data, ensuring its quality for streaming and analysis.
+
+- `setup_sales_db.py`: ['setup_sales_db.py'](setup_sales_db.py) is created to create sales database schema for stock and sales in PostgreSQL.
+
+- `produce_sales_data.py`: ['produce_sales_data.py'](produce_sales_data.py) is responsible for streaming data to the `sales` topic in Kafka.
+
+- `spark_streaming_etl.py`: ['spark_streaming_etl.py'](spark_streaming_etl.py) sets up the logger, initializes the Spark Session, defines configuration parameters, and calls the `process_data` function to execute the ETL process.
+
+### Running Project:
 
 1- Clone the repository:
 
@@ -40,7 +50,7 @@ cd Application_of_sales_analysis
 3- Install the needed packages and libraries:
 
 ```
-pip install -r ./requirements.txt
+pip3 install -r ./requirements.txt
 ```
 
 3- Install Docker, Docker compose:
@@ -66,3 +76,10 @@ python3 spark_streaming_etl.py
 python3 produce_sales_data.py
 ```
 
+### Dashboard Demo
+
+Check out a brief demo of Sales dashboard:
+
+<p align="center">
+  <img src="images/dashboard.gif" alt="Wallpaper">
+</p>
