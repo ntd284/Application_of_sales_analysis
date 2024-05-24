@@ -51,13 +51,13 @@ Dataset will be cleaned and processed to ensure quality of data before producing
 - Sales table: store sessions of sales in PostgreSQL
 
 <p align="center">
-  <img src="images/sales_db.png" alt="Wallpaper">
+  <img src="images/sales_db.png" alt="ifcmd" width='350'>
 </p>
 
 - Stocks table: store the total of product quantity in stocks in PostgreSQL
 
 <p align="center">
-  <img src="images/stocks_db.png" alt="Wallpaper">
+  <img src="images/stocks_db.png" alt="ifcmd" width='350'>
 </p>
 
 
