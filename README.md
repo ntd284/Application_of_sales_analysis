@@ -27,3 +27,40 @@ The project aims to answer key questions through real-time data analysis:
 
 To simulate product checkouts, [Sales_Dataset](Datasource) will be used in the Kafka producer.
 
+2. Data preparation: [prepare_data.py](prepare_data.py) 
+
+Dataset will be cleaned and processed to ensure quality of data before producing. Two main datasets will be used:
+
+- Sales table: store sessions of sales
+
+<p align="center">
+  <img src="images/sales.png" alt="Wallpaper">
+</p>
+
+- Stocks tables: store the total of product quantity in stocks
+
+<p align="center">
+  <img src="images/stocks.png" alt="Wallpaper">
+</p>
+
+3. Streaming data to Data Warehouse : 
+
+3.1. Build schema in Data Warehouse (PostgreSQL): [setup_sales_db.py](setup_sales_db.py)
+
+
+- Sales table: store sessions of sales in PostgreSQL
+
+<p align="center">
+  <img src="images/sales_db.png" alt="Wallpaper">
+</p>
+
+- Stocks table: store the total of product quantity in stocks in PostgreSQL
+
+<p align="center">
+  <img src="images/stocks_db.png" alt="Wallpaper">
+</p>
+
+
+
+
+
