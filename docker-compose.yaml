@@ -20,6 +20,7 @@ services:
         - ADMIN_PASSWORD=admin
       ports:
         - '8088:8088'
+
   zookeeper:
     image: confluentinc/cp-zookeeper
     environment:
@@ -87,38 +88,4 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
 
-#kafdrop for topic/msg visualization
-  kafdrop:
-    image: obsidiandynamics/kafdrop:3.28.0
-    platform: linux/amd64
-    restart: "no"
-    environment:
-      KAFKA_BROKERCONNECT: "kafka1:29092,kafka2:29093,kafka3:29094"
-      JVM_OPTS: "-Xms16M -Xmx512M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
-    ports:
-      - 9000:9000
-    depends_on:
-      - kafka1
-      - kafka2
-      - kafka3
-#debezium connector
-  kconnect:
-    image: debezium/connect:1.9
-    platform: linux/amd64
-    ports:
-      - 8083:8083
-    environment:
-      CONFIG_STORAGE_TOPIC:   my_connect_configs
-      OFFSET_STORAGE_TOPIC:   my_connect_offsets
-      STATUS_STORAGE_TOPIC:   my_connect_statuses
-      BOOTSTRAP_SERVERS:   kafka1:29092,kafka2:29093,kafka3:29094 #kafka note
-    links:
-      - zookeeper
-      - postgres
-    depends_on: #kafka connect
-      - kafka1
-      - kafka2
-      - kafka3
-      - zookeeper
-      - postgres
 

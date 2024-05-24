@@ -38,6 +38,8 @@ def data_prepare():
     formatting_data_df['sales']= formatting_data_df['each_price'] * formatting_data_df['quantity_sold']
     formatting_data_df = formatting_data_df.sort_values(by='sale_date').reset_index(drop=True)
     print('...success formatting...')
+    pd.set_option('display.max_columns', None)
+    print(formatting_data_df.head(10).to_string())
 
 
 # Load: saving to sinks
