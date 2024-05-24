@@ -25,13 +25,13 @@ The project aims to answer key questions through real-time data analysis:
 
 ### Project file:
 
-- `prepare_data.py`: ['prepare_data.py'](prepare_data.py) is created to clean the raw sales data, ensuring its quality for streaming and analysis.
+- `prepare_data.py`: [prepare_data.py](prepare_data.py) is created to clean the raw sales data, ensuring its quality for streaming and analysis.
 
-- `setup_sales_db.py`: ['setup_sales_db.py'](setup_sales_db.py) is created to create sales database schema for stock and sales in PostgreSQL.
+- `setup_sales_db.py`: [setup_sales_db.py](setup_sales_db.py) is created to create sales database schema for stock and sales in PostgreSQL.
 
-- `produce_sales_data.py`: ['produce_sales_data.py'](produce_sales_data.py) is responsible for streaming data to the `sales` topic in Kafka.
+- `produce_sales_data.py`: [produce_sales_data.py](produce_sales_data.py) is responsible for streaming data to the `sales` topic in Kafka.
 
-- `spark_streaming_etl.py`: ['spark_streaming_etl.py'](spark_streaming_etl.py) sets up the logger, initializes the Spark Session, defines configuration parameters, and calls the `process_data` function to execute the ETL process.
+- `spark_streaming_etl.py`: [spark_streaming_etl.py](spark_streaming_etl.py) sets up the logger, initializes the Spark Session, defines configuration parameters, and calls the `process_data` function to execute the ETL process.
 
 ### Running Project:
 
@@ -83,3 +83,9 @@ Check out a brief demo of Sales dashboard:
 <p align="center">
   <img src="images/dashboard.gif" alt="Wallpaper">
 </p>
+
+### Reference:
+
+[1]. Alaa haggag(Nov 26, 2023) Real-Time Sales Data Analysis Application: Leveraging Kafka, Spark, Airflow, and Apache superset [link](https://medium.com/@alaahgag34/real-time-sales-data-analysis-application-leveraging-kafka-spark-airflow-and-apache-superset-f7db6a31823a)
+
+[2]. Nguyen Truong(May 9, 2022) Xây dựng mô hình Real-time Analytic [link](https://www.linkedin.com/pulse/xây-dựng-mô-hình-real-time-analytic-nguyen-truong/)
