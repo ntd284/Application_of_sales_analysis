@@ -34,8 +34,8 @@ Dataset will be cleaned and processed to ensure quality of data before producing
 - `Sales table` and `Stocks tables`:  store sessions of sales and total of product quantity in stocks
 
 <p align="center">
-  <img src="images/sales.png" alt="Wallpaper">
-  <img src="images/stocks.png" alt="Wallpaper">
+  <img src="images/sales.png" alt="Wallpaper",width="350">
+  <img src="images/stocks.png" alt="Wallpaper",width="350">
 </p>
 
 3. Streaming data to Data Warehouse : 
