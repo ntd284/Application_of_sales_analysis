@@ -47,19 +47,17 @@ Dataset will be cleaned and processed to ensure quality of data before producing
 
 3.1. Build schema in Data Warehouse (PostgreSQL): [setup_sales_db.py](setup_sales_db.py)
 
-
-- Sales table: store sessions of sales in PostgreSQL
-
-<p align="center">
-  <img src="images/sales_db.png" alt="ifcmd" width='350'>
-</p>
-
-- Stocks table: store the total of product quantity in stocks in PostgreSQL
+- Sales and stocks table in postgres
 
 <p align="center">
-  <img src="images/stocks_db.png" alt="ifcmd" width='350'>
+  <img src="images/sales_db.png" alt="Sales DB Schema" width="350">
+  <img src="images/stocks_db.png" alt="Stocks DB Schema" width="350">
 </p>
 
+
+3.2. Data producer: [produce_sales.py](produce_sales.py) 
+
+This is created to send and stream data ti the `sales` topic Kafka.
 
 
 
