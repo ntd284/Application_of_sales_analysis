@@ -40,7 +40,7 @@ cd Application_of_sales_analysis
 3- Install the needed packages and libraries:
 
 ```
-pip install -r ./requirement.txt
+pip install -r ./requirements.txt
 ```
 
 3- Install Docker, Docker compose:
@@ -55,5 +55,14 @@ docker compose version
 
 ```
 docker compose up -d
+```
+
+5- Run step by step files:
+
+```
+python3 `prepare_data.py`
+python3 `setup_sales_db.py`
+python3 `spark_streaming_etl.py`
+python3 `produce_sales_data.py`
 ```
 
