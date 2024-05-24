@@ -31,15 +31,10 @@ To simulate product checkouts, [Sales_Dataset](Datasource) will be used in the K
 
 Dataset will be cleaned and processed to ensure quality of data before producing. Two main datasets will be used:
 
-- Sales table: store sessions of sales
+- `Sales table` and `Stocks tables`:  store sessions of sales and total of product quantity in stocks
 
 <p align="center">
   <img src="images/sales.png" alt="Wallpaper">
-</p>
-
-- Stocks tables: store the total of product quantity in stocks
-
-<p align="center">
   <img src="images/stocks.png" alt="Wallpaper">
 </p>
 
@@ -47,7 +42,7 @@ Dataset will be cleaned and processed to ensure quality of data before producing
 
 3.1. Build schema in Data Warehouse (PostgreSQL): [setup_sales_db.py](setup_sales_db.py)
 
-- Sales and stocks table in postgres
+- `Sales table` and `stocks table` in PostgreSQL database
 
 <p align="center">
   <img src="images/sales_db.png" alt="Sales DB Schema" width="350">
