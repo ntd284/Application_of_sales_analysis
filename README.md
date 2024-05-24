@@ -21,5 +21,9 @@ The project aims to answer key questions through real-time data analysis:
 - How can sales trends be analyzed monthly?
 - What stocks are running low, and when should they be added?
 
+## Project Workflow
 
+1. Data ingestion:
+
+To simulate product checkouts, [Sales_Dataset](Datasource) will be used in the Kafka producer.
 
