@@ -78,7 +78,7 @@ python3 produce_sales_data.py
 
 ### Dashboard Demo
 
-Check out a brief demo of Sales dashboard:
+Check out a brief demo of Sales dashboard: at `http://localhost:8088`
 
 <p align="center">
   <img src="images/dashboard.gif" alt="Wallpaper">
