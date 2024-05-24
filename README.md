@@ -21,39 +21,39 @@ The project aims to answer key questions through real-time data analysis:
 - How can sales trends be analyzed monthly?
 - What stocks are running low, and when should they be added?
 
-## Project Workflow
+## Getting Started
 
-1. Data ingestion:
+### Setup:
 
-To simulate product checkouts, [Sales_Dataset](Datasource) will be used in the Kafka producer.
+1- Clone the repository:
 
-2. Data preparation: [prepare_data.py](prepare_data.py) 
+```
+git clone https://github.com/ntd284/Application_of_sales_analysis.git
+```
 
-Dataset will be cleaned and processed to ensure quality of data before producing. Two main datasets will be used:
+2- Navigate to the project directory
 
-- `Sales table` and `Stocks tables`:  store sessions of sales and total of product quantity in stocks
+```
+cd Application_of_sales_analysis
+```
 
-<p align="center">
-  <img src="images/sales.png" alt="Wallpaper",width="350">
-  <img src="images/stocks.png" alt="Wallpaper",width="350">
-</p>
+3- Install the needed packages and libraries:
 
-3. Streaming data to Data Warehouse : 
+```
+pip install -r ./requirement.txt
+```
 
-3.1. Build schema in Data Warehouse (PostgreSQL): [setup_sales_db.py](setup_sales_db.py)
+3- Install Docker, Docker compose:
 
-- `Sales table` and `stocks table` in PostgreSQL database
+```
+sudo ./installdocker.sh
+docker --version
+docker compose version
+```
 
-<p align="center">
-  <img src="images/sales_db.png" alt="Sales DB Schema" width="350">
-  <img src="images/stocks_db.png" alt="Stocks DB Schema" width="350">
-</p>
+4- Build docker:
 
-
-3.2. Data producer: [produce_sales.py](produce_sales.py) 
-
-This is created to send and stream data ti the `sales` topic Kafka.
-
-
-
+```
+docker compose up -d
+```
 
