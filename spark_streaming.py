@@ -60,7 +60,7 @@ def read_kafka_data(spark,kafka_topic,kafka_bootstrap_servers):
         .format("kafka") \
         .option("kafka.bootstrap.servers",kafka_bootstrap_servers) \
         .option("subscribe",kafka_topic) \
-        .option("startingOffsets","earliest") \
+        .option("startingOffsets","latest") \
         .load()
     
     sales_df1 = sales_df.selectExpr("CAST(value AS STRING)")
@@ -138,7 +138,7 @@ def process_data(spark,kafka_topic,kafka_bootstrap_servers, stock_filepath, post
         .start()\
 
     stocks_df.writeStream \
-        .trigger(processingTime = '30 seconds') \
+        .trigger(processingTime = '10 seconds') \
         .outputMode('complete')\
         .option('truncate', 'true') \
         .foreachBatch(lambda df, epoch_id: df.write.jdbc(url=postgresql_jdbc_url, table='stocks', mode='overwrite', properties=postgres_config))\
