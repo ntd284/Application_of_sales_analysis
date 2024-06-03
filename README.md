@@ -84,11 +84,10 @@ Check out a brief demo of Sales dashboard: at `http://localhost:8088`
   <img src="images/dashboard.gif" alt="Wallpaper">
 </p>
 
-
-<b>That's all for my project, thanks for watching. If you have any question, don't hesitate inbox me.</b>
-
 ### Reference:
 
 [1]. Alaa haggag(Nov 26, 2023)[ Real-Time Sales Data Analysis Application: Leveraging Kafka, Spark, Airflow, and Apache superset ](https://medium.com/@alaahgag34/real-time-sales-data-analysis-application-leveraging-kafka-spark-airflow-and-apache-superset-f7db6a31823a)
 
 [2]. Nguyen Truong(May 9, 2022)[ Xây dựng mô hình Real-time Analytic](https://www.linkedin.com/pulse/xây-dựng-mô-hình-real-time-analytic-nguyen-truong/)
+
+<b> ⚡️⚡️That's all for my project, thanks for watching. If you have any question, don't hesitate inbox me. ⚡️⚡️</b>
