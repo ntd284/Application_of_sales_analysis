@@ -23,7 +23,7 @@ The project aims to answer key questions through real-time data analysis:
 
 ## Getting Started
 
-### Project file:
+###  Project file:
 
 - `prepare_data.py`: [prepare_data.py](prepare_data.py) is created to clean the raw sales data, ensuring its quality for streaming and analysis.
 
@@ -33,7 +33,7 @@ The project aims to answer key questions through real-time data analysis:
 
 - `spark_streaming_etl.py`: [spark_streaming_etl.py](spark_streaming_etl.py) sets up the logger, initializes the Spark Session, defines configuration parameters, and calls the `process_data` function to execute the ETL process.
 
-### Running Project:
+### 👟 Running Project:
 
 1- Clone the repository:
 
@@ -83,6 +83,9 @@ Check out a brief demo of Sales dashboard: at `http://localhost:8088`
 <p align="center">
   <img src="images/dashboard.gif" alt="Wallpaper">
 </p>
+
+
+<b>That's all for my project, thanks for watching. If you have any question, don't hesitate inbox me.</b>
 
 ### Reference:
 
