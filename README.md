@@ -90,4 +90,4 @@ Check out a brief demo of Sales dashboard: at `http://localhost:8088`
 
 [2]. Nguyen Truong(May 9, 2022)[ Xây dựng mô hình Real-time Analytic](https://www.linkedin.com/pulse/xây-dựng-mô-hình-real-time-analytic-nguyen-truong/)
 
-<b> ⚡️⚡️That's all for my project, thanks for watching. If you have any question, don't hesitate inbox me. ⚡️⚡️</b>
+<b> ⚡️That's all for my project, thanks for watching. If you have any question, don't hesitate inbox me.⚡️</b>
